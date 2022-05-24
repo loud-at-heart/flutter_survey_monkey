@@ -32,7 +32,7 @@ class _MyAppState extends State<MyApp> {
     // We also handle the message potentially returning null.
     try {
       platformVersion =
-          await _flutterSurveyMonkeyPlugin.getPlatformVersion() ?? 'Unknown platform version';
+          await _flutterSurveyMonkeyPlugin.openSurvey(surveyHash: "") ?? 'Unknown platform version';
     } on PlatformException {
       platformVersion = 'Failed to get platform version.';
     }
