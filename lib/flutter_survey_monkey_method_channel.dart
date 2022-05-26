@@ -10,9 +10,9 @@ class MethodChannelFlutterSurveyMonkey extends FlutterSurveyMonkeyPlatform {
   final methodChannel = const MethodChannel('flutter_survey_monkey');
 
   @override
-  Future<String?> openSurvey({required String surveyHash}) async {
+  Future<bool?> openSurvey({required String surveyHash}) async {
     final version =
-        await methodChannel.invokeMethod<String>('openSurvey', surveyHash);
+        await methodChannel.invokeMethod<bool>('openSurvey', surveyHash);
     return version;
   }
 }

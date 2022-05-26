@@ -26,6 +26,7 @@ class FlutterSurveyMonkeyPlugin: FlutterPlugin, MethodCallHandler,ActivityAware,
   val surveyMonkey: SurveyMonkey= SurveyMonkey()
   private var activity: Activity? = null
   private lateinit var result: Result
+  private val REQUESTCODE=0
 
 
 
@@ -70,7 +71,12 @@ class FlutterSurveyMonkeyPlugin: FlutterPlugin, MethodCallHandler,ActivityAware,
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-    result.success("")
-    return true
+    if(resultCode==Activity.RESULT_OK&&requestCode==REQUESTCODE)
+    {
+      result.success(true)
+      return true
+    }
+    result.success(false)
+    return false
   }
 }
