@@ -27,6 +27,9 @@ class FlutterSurveyMonkeyPlugin: FlutterPlugin, MethodCallHandler,ActivityAware,
   private var activity: Activity? = null
   private lateinit var result: Result
   private val REQUESTCODE=0
+  private var  calledMethod:String=""
+  private val openSurvey:String="openSurvey"
+  private val openSurveyWithResult:String="openSurveyWithResult"
 
 
 
@@ -36,7 +39,8 @@ class FlutterSurveyMonkeyPlugin: FlutterPlugin, MethodCallHandler,ActivityAware,
   }
 
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
-    if (call.method == "openSurvey") {
+    calledMethod=call.method
+    if (call.method == openSurvey) {
       this.result=result
       openSurvey(call.arguments.toString())
     } else {
@@ -71,12 +75,15 @@ class FlutterSurveyMonkeyPlugin: FlutterPlugin, MethodCallHandler,ActivityAware,
   }
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?): Boolean {
-    if(resultCode==Activity.RESULT_OK&&requestCode==REQUESTCODE)
+    if(calledMethod==openSurvey)
     {
-      result.success(true)
-      return true
+      if(resultCode==Activity.RESULT_OK&&requestCode==REQUESTCODE)
+      {
+        result.success(true)
+        return true
+      }
+      result.success(false)
     }
-    result.success(false)
     return false
   }
 }
