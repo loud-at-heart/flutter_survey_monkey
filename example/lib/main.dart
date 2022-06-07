@@ -16,7 +16,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  bool _isSurveyCompleted = false;
+  Map _isSurveyCompleted = {};
   final _flutterSurveyMonkeyPlugin = FlutterSurveyMonkey();
 
   @override
@@ -27,14 +27,16 @@ class _MyAppState extends State<MyApp> {
 
   // Platform messages are asynchronous, so we initialize in an async method.
   Future<void> initPlatformState() async {
-    bool isSurveyCompleted;
+    Map isSurveyCompleted = {};
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      isSurveyCompleted =
-          await _flutterSurveyMonkeyPlugin.openSurvey(surveyHash: "") ?? false;
-    } on PlatformException {
-      isSurveyCompleted = false;
+      bool isSurveyCompleted = await _flutterSurveyMonkeyPlugin.openSurvey(
+            surveyHash: "",
+          ) ??
+          false;
+    } catch (e, s) {
+      isSurveyCompleted = {};
     }
 
     // If the widget was removed from the tree while the asynchronous platform

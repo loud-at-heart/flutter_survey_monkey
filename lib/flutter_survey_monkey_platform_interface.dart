@@ -24,7 +24,10 @@ abstract class FlutterSurveyMonkeyPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<bool?> openSurvey({required String surveyHash}) {
+  Future<bool?> openSurvey(
+      {required String surveyHash, Map<String, dynamic>? customVariables}) {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<Map?> openSurveyWithResult({required String surveyHash});
 }
