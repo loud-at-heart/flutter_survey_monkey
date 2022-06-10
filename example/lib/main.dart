@@ -31,10 +31,9 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      bool isSurveyCompleted = await _flutterSurveyMonkeyPlugin.openSurvey(
-            surveyHash: "",
-          ) ??
-          false;
+      var isSurveyCompleted =
+          await _flutterSurveyMonkeyPlugin.getSurveyResponse(surveyHash: "") ??
+              false;
     } catch (e, s) {
       isSurveyCompleted = {};
     }

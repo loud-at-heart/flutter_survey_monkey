@@ -10,22 +10,28 @@ class MethodChannelFlutterSurveyMonkey extends FlutterSurveyMonkeyPlatform {
   final methodChannel = const MethodChannel('flutter_survey_monkey');
 
   @override
-  Future<bool?> openSurvey(
+  Future<bool?> getSurveyStatus(
       {required String surveyHash,
       Map<String, dynamic>? customVariables}) async {
     Map<String, dynamic> methodArguments = {'surveyHash': surveyHash};
     if (customVariables != null) {
       methodArguments['customVariables'] = customVariables;
     }
-    final version =
-        await methodChannel.invokeMethod<bool>('openSurvey', methodArguments);
+    final version = await methodChannel.invokeMethod<bool>(
+        'getSurveyStatus', methodArguments);
     return version;
   }
 
   @override
-  Future<Map?> openSurveyWithResult({required String surveyHash}) async {
-    final version = await methodChannel
-        .invokeMethod<Map>('openSurveyWithResult', {'surveyHash': surveyHash});
+  Future<Map?> getSurveyResponse(
+      {required String surveyHash,
+      Map<String, dynamic>? customVariables}) async {
+    Map<String, dynamic> methodArguments = {'surveyHash': surveyHash};
+    if (customVariables != null) {
+      methodArguments['customVariables'] = customVariables;
+    }
+    final version = await methodChannel.invokeMethod<Map>(
+        'getSurveyResponse', methodArguments);
     return version;
   }
 }
