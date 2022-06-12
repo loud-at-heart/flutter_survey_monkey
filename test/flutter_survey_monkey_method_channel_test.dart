@@ -1,24 +1,25 @@
-// import 'package:flutter/services.dart';
-// import 'package:flutter_test/flutter_test.dart';
-// import 'package:flutter_survey_monkey/flutter_survey_monkey_method_channel.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_test/flutter_test.dart';
+import 'package:flutter_survey_monkey/flutter_survey_monkey_method_channel.dart';
 
-// void main() {
-//   MethodChannelFlutterSurveyMonkey platform = MethodChannelFlutterSurveyMonkey();
-//   const MethodChannel channel = MethodChannel('flutter_survey_monkey');
+void main() {
+  MethodChannelFlutterSurveyMonkey platform =
+      MethodChannelFlutterSurveyMonkey();
+  const MethodChannel channel = MethodChannel('flutter_survey_monkey');
 
-//   TestWidgetsFlutterBinding.ensureInitialized();
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-//   setUp(() {
-//     channel.setMockMethodCallHandler((MethodCall methodCall) async {
-//       return '42';
-//     });
-//   });
+  setUp(() {
+    channel.setMockMethodCallHandler((MethodCall methodCall) async {
+      return false;
+    });
+  });
 
-//   tearDown(() {
-//     channel.setMockMethodCallHandler(null);
-//   });
+  tearDown(() {
+    channel.setMockMethodCallHandler(null);
+  });
 
-//   test('getPlatformVersion', () async {
-//     expect(await platform.getPlatformVersion(), '42');
-//   });
-// }
+  test('getSurveyStatus', () async {
+    expect(await platform.getSurveyStatus(surveyHash: "a"), false);
+  });
+}
