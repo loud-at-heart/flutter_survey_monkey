@@ -36,20 +36,32 @@ dependencies:
   flutter_survey_monkey: ^0.0.1
 ```
 
-In your library add the following import:
+In your project add the following import:
 
 ```dart
 import 'package:flutter_survey_monkey/flutter_survey_monkey.dart';
 ```
 
+### Android
+
+Set the `minSdkVersion` in `android/app/build.gradle`:
+
+```groovy
+android {
+    defaultConfig {
+        minSdkVersion 21
+    }
+}
+```
+
 #### Getting Survey Status
 
-getSurveyStatus method will return true if the user successfully completes the survey by answering all of the required questions. It will return false if the user did not complete the survey or if the provided Survey Hash is invalid or if any other problem occurs while the plugin is trying to open the survey for you.
+getSurveyStatus method will return true if the user successfully completes the survey by answering all of the required questions. It will return false if the user did not complete the survey or if the provided Survey Hash is invalid or if any other problem occurs while the plugin is trying to open the survey for you. customVariables is optional.
 ```dart
 try {
   ///Replace empty string with your Survey Hash value
   bool surveyStatus = await _flutterSurveyMonkeyPlugin
-          .getSurveyStatus(surveyHash: "") ??
+          .getSurveyStatus(surveyHash: "",customVariables:{}) ??
       false;
   debugPrint("Survey Status: ${surveyStatus.toString()}");
 } catch (exception, stackTrace) {
@@ -71,12 +83,12 @@ false
 
 #### Getting Survey Response
 
-getSurveyResponse method will return true as surveyCompleted in the map, along with all of the questions and answers as surveyResponse, if the user completes the survey successfully by answering all of the required questions. It will return false as surveyStatus in the map if the user did not fill out all of the required questions, or if the provided Survey Hash is invalid, or if any other problem occurs while the plugin is trying to open the survey for you.
+getSurveyResponse method will return true as surveyCompleted in the map, along with all of the questions and answers as surveyResponse, if the user completes the survey successfully by answering all of the required questions. It will return false as surveyStatus in the map if the user did not fill out all of the required questions, or if the provided Survey Hash is invalid, or if any other problem occurs while the plugin is trying to open the survey for you. customVariables is optional.
 ```dart
 try {
   ///Replace empty string with your Survey Hash value
   Map surveyResponse = await _flutterSurveyMonkeyPlugin
-          .getSurveyResponse(surveyHash: "") ??
+          .getSurveyResponse(surveyHash: "",customVariables:{}) ??
       {};
   debugPrint("Survey Response: ${surveyResponse.toString()}");
 } catch (exception, stackTrace) {
