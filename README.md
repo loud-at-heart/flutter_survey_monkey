@@ -11,6 +11,8 @@
 
 A plugin allows you to integrate your [SurveyMonkey](https://www.surveymonkey.com/) survey into your Flutter application for Android and iOS(Development Pending).
 
+If your project uses Flutter SurveyMonkey, let me know by creating a new issue or PR! 🤗
+
 ## Currently supported features
 * Getting Survey Status
 * Getting Survey Response
@@ -107,3 +109,23 @@ Example: 2(False case)
 {'surveyCompleted': false}
 ```
 
+## Find this library useful? :heart:
+Support it by joining __[stargazers](https://github.com/msarkrish/flutter_survey_monkey/stargazers)__ for this repository. :star:
+
+## Example Usage
+
+See [Example Code](example/lib/main.dart) for more info.
+
+## Issues & Feedback
+
+Please file an [issue](https://github.com/msarkrish/flutter_survey_monkey/issues) to send feedback or report a bug,  
+If you want to ask a question or suggest an idea then you can [open an discussion](https://github.com/msarkrish/flutter_survey_monkey/discussions).  
+Thank you!
+
+## Contributing
+
+All kind of contributions are Welcome.
+* If you have a mac and SurveyHash value then you can submit pull request iOS implementation.
+* Fix grammer mistake.
+* Create issue.
+* Fix issue by submitting pull request.
