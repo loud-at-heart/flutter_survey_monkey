@@ -7,7 +7,8 @@ import 'flutter_survey_monkey_platform_interface.dart';
 class MethodChannelFlutterSurveyMonkey extends FlutterSurveyMonkeyPlatform {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
-  final methodChannel = const MethodChannel('flutter_survey_monkey');
+  final methodChannel =
+      const MethodChannel('com.muthuselviapps.flutter_survey_monkey');
 
   @override
   Future<bool?> getSurveyStatus(

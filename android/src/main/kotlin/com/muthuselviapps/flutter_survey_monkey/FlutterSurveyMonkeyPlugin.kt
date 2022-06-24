@@ -31,7 +31,7 @@ class FlutterSurveyMonkeyPlugin: FlutterPlugin, MethodCallHandler,ActivityAware,
 
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "flutter_survey_monkey")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.muthuselviapps.flutter_survey_monkey")
     channel.setMethodCallHandler(this)
   }
 
